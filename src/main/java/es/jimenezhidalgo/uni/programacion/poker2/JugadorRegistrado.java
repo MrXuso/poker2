@@ -1,5 +1,7 @@
 package es.jimenezhidalgo.uni.programacion.poker2;
 
+import es.jimenezhidalgo.uni.programacion.poker2.utils.DateUtils;
+
 import java.util.Date;
 
 /**
@@ -9,11 +11,17 @@ public class JugadorRegistrado extends Jugador{
 
     private String mCuentaBancaria;
     private String mContrasenia;
+    private Date mFechaRegistro;
 
-    public JugadorRegistrado(String nif, String nombbre, String apellidos, double saldo, Date fechaNacimiento, String cuentaBancaria, String contrasenia) {
+    public JugadorRegistrado(String nif, String nombbre, String apellidos, double saldo, Date fechaNacimiento, String cuentaBancaria, String contrasenia, Date fechaRegistro) {
         super(nif, nombbre, apellidos, saldo, fechaNacimiento);
         mCuentaBancaria = cuentaBancaria;
         mContrasenia = contrasenia;
+        mFechaRegistro = fechaRegistro;
+    }
+
+    public Date getFechaRegistro() {
+        return mFechaRegistro;
     }
 
     public String getCuentaBancaria() {
@@ -32,13 +40,20 @@ public class JugadorRegistrado extends Jugador{
         mContrasenia = contrasenia;
     }
 
+    public void setFechaRegistro(Date fechaRegistro) {
+        mFechaRegistro = fechaRegistro;
+    }
+
     public double retirarBeneficios() {
 
         if (getSaldo() > 0) {
+            int anios = DateUtils.getDiferenciaAnios(mFechaRegistro, new Date());
+            double multiplicador = 1 + (anios * 0.02);
+
             double saldo = getSaldo();
-            //TODO: Añadir 2% por año
             setSaldo(0);
-            return saldo;
+            
+            return saldo * multiplicador;
         }
 
         //TODO:  Añadir excepción
