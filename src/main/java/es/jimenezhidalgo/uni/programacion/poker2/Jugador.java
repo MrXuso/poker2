@@ -8,14 +8,14 @@ import java.util.Date;
 public abstract class Jugador {
 
     private String mNif;
-    private String mNombbre;
+    private String mNombre;
     private String mApellidos;
     private double mSaldo;
     private Date mFechaNacimiento;
 
-    public Jugador(String nif, String nombbre, String apellidos, double saldo, Date fechaNacimiento) {
+    public Jugador(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento) {
         mNif = nif;
-        mNombbre = nombbre;
+        mNombre = nombre;
         mApellidos = apellidos;
         mSaldo = saldo;
         mFechaNacimiento = fechaNacimiento;
@@ -25,8 +25,8 @@ public abstract class Jugador {
         return mNif;
     }
 
-    public String getNombbre() {
-        return mNombbre;
+    public String getNombre() {
+        return mNombre;
     }
 
     public String getApellidos() {
