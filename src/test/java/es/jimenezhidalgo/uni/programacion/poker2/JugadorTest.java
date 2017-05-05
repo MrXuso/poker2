@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 /**
  * Created by jesus.jimenez on 04/05/2017.
  */
-public class JugadorRegistradoTest {
+public class JugadorTest {
 
     private JugadorRegistrado mJugadorRegistrado;
     private String mNif, mNombre, mApellidos, mCuentaBancaria, mContrasenia;
