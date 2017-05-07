@@ -9,8 +9,8 @@ public class JugadorOcasional extends Jugador {
 
     private String mNumeroTarjeta;
 
-    public JugadorOcasional(String nif, String nombbre, String apellidos, double saldo, Date fechaNacimiento, String numeroTarjeta) {
-        super(nif, nombbre, apellidos, saldo, fechaNacimiento);
+    public JugadorOcasional(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento, String numeroTarjeta) {
+        super(nif, nombre, apellidos, saldo, fechaNacimiento);
         mNumeroTarjeta = numeroTarjeta;
     }
 

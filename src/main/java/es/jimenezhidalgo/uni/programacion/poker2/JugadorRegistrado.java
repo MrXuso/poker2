@@ -13,8 +13,8 @@ public class JugadorRegistrado extends Jugador{
     private String mContrasenia;
     private Date mFechaRegistro;
 
-    public JugadorRegistrado(String nif, String nombbre, String apellidos, double saldo, Date fechaNacimiento, String cuentaBancaria, String contrasenia, Date fechaRegistro) {
-        super(nif, nombbre, apellidos, saldo, fechaNacimiento);
+    public JugadorRegistrado(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento, String cuentaBancaria, String contrasenia, Date fechaRegistro) {
+        super(nif, nombre, apellidos, saldo, fechaNacimiento);
         mCuentaBancaria = cuentaBancaria;
         mContrasenia = contrasenia;
         mFechaRegistro = fechaRegistro;
