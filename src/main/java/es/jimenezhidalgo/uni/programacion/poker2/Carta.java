@@ -59,4 +59,12 @@ public class Carta {
     public boolean mismoPalo(Carta carta){
         return (mPalo == carta.mPalo);
     }
+
+    public int getCartaInt(){
+        return mPalo * 100 + mFigura;
+    }
+
+    public static int getCartaInt(Carta carta){
+        return carta.getCartaInt();
+    }
 }
