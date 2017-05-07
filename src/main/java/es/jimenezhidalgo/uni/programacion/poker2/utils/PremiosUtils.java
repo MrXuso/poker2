@@ -37,6 +37,14 @@ public final class PremiosUtils {
             return TIENE_COLOR;
         }
 
+        if(tieneTrio(mano)){
+            return TIENE_TRIO;
+        }
+
+        if (tieneDoblePareja(mano)){
+            return TIENE_DOBLE_PAREJA;
+        }
+
         if(tienePareja(mano)){
             return TIENE_PAREJA;
         }
@@ -47,7 +55,7 @@ public final class PremiosUtils {
     private static boolean tienePareja(ArrayList<Carta> mano){
         int ocurrencias = 1;
 
-        for (int i = 0, aux = 1; i < 5; i++) {
+        for (int i = 0, aux = 1; i < 4; i++) {
             for (int j = 0; j < 5; j++) {
                 if (i == j) continue;
                 if (mano.get(i).mismaFigura(mano.get(j))) aux++;
@@ -56,17 +64,31 @@ public final class PremiosUtils {
             aux = 1;
         }
 
-        if (ocurrencias == 2){
-            return true;
+        return ocurrencias == 2;
+
+    }
+
+    private static boolean tieneDoblePareja(ArrayList<Carta> mano) {
+        int ocurrencias = 0;
+        ArrayList<Carta> manoAux = new ArrayList<>();
+        manoAux.addAll(mano);
+
+        for (int i = 0, aux = 0; i < 4; i++, aux=0) {
+            for (Carta unaCarta : manoAux) {
+                if (manoAux.get(0).mismaFigura(unaCarta)) aux++;
+            }
+            if (aux  == 2) ocurrencias += 2;
+            if (aux >= 3) return false;
+            manoAux.remove(0);
         }
 
-        return false;
+        return ocurrencias == 4;
     }
 
     private static boolean tieneTrio(ArrayList<Carta> mano){
         int ocurrencias = 1;
 
-        for (int i = 0, aux = 1; i < 5; i++) {
+        for (int i = 0, aux = 1; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
                 if (i == j) continue;
                 if (mano.get(i).mismaFigura(mano.get(j))) aux++;
@@ -75,11 +97,8 @@ public final class PremiosUtils {
             aux = 1;
         }
 
-        if (ocurrencias == 3){
-            return true;
-        }
+        return ocurrencias == 3;
 
-        return false;
     }
 
     /**
@@ -108,22 +127,22 @@ public final class PremiosUtils {
      */
     private static boolean tieneFull(ArrayList<Carta> mano){
 
-        int ocurrencias1 = 1, ocurrencias2 = 0;
+        int ocurrencias = 1;
 
         /*
         * Primero compruebo cuántas cartas hay en la mano que tengan la misma figura y
-        * guardo el resultado en la variable ocurrencias1
+        * guardo el resultado en la variable ocurrencias
         */
         for (int i = 1; i < 5; i++) {
             if (mano.get(0).mismaFigura(mano.get(i))){
-                ocurrencias1++;
+                ocurrencias++;
             }
         }
 
         /*
         * Si tenemos menos de dos cartas repetidas o más de tres entonces no podemos tener full
         */
-        if (ocurrencias1 < 2 || ocurrencias1 > 3){
+        if (ocurrencias < 2 || ocurrencias > 3){
             return false;
         }
 
@@ -144,7 +163,7 @@ public final class PremiosUtils {
          */
         for (int i = 1; i < 5; i++) {
             if (mano.get(cartaDiferente).mismaFigura(mano.get(i))){
-                ocurrencias2++;
+                ocurrencias++;
             }
         }
 
@@ -152,11 +171,7 @@ public final class PremiosUtils {
         * En el caso de que la ocurrencia 1 y la 2 sumen 5, entonces tenemos trío y pareja,
         * por lo tanto es full
          */
-        if (ocurrencias1 + ocurrencias2 != 5){
-            return false;
-        }
-
-        return true;
+        return ocurrencias == 5;
     }
 
     /**
