@@ -14,7 +14,7 @@ public class JugadorException extends Exception{
     public static final String EDAD_INCORRECTA = "Edad incorrecta";
 
     public JugadorException() {
-        super();
+        super("Se ha producido un error en el programa");
     }
 
     public JugadorException(String message) {
