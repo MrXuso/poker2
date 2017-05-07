@@ -1,9 +1,11 @@
 package es.jimenezhidalgo.uni.programacion.poker2;
 
 import es.jimenezhidalgo.uni.programacion.poker2.JugadorRegistrado;
+import es.jimenezhidalgo.uni.programacion.poker2.utils.FacturaUtil;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.*;
 import java.util.Date;
 
 import static org.junit.Assert.*;
@@ -20,36 +22,17 @@ public class JugadorTest {
     public void setUp() throws Exception {
         mNif = "00000000T";
         mNombre = "Pepito";
-        mJugadorRegistrado = new JugadorRegistrado(mNif, "Pepito", "Perez", 50.0, new Date(0), "12309331093", "asdf1234", new Date());
+        mJugadorRegistrado = new JugadorRegistrado(mNif, "Pepito", "Pérez", 50.0, new Date(0), "12309331093", "asdf1234", new Date());
     }
 
     @Test
-    public void getFechaRegistro() throws Exception {
-
-    }
-
-    @Test
-    public void getCuentaBancaria() throws Exception {
-
-    }
-
-    @Test
-    public void setCuentaBancaria() throws Exception {
-
-    }
-
-    @Test
-    public void getContrasenia() throws Exception {
-
-    }
-
-    @Test
-    public void setContrasenia() throws Exception {
-
-    }
-
-    @Test
-    public void setFechaRegistro() throws Exception {
+    public void crearFactura(){
+        try {
+            mJugadorRegistrado.setFechaRegistro(new Date(System.currentTimeMillis() - 4L * 356 * 24 * 3600 * 1000));
+            FacturaUtil.crearFactura(mJugadorRegistrado, 50);
+        } catch (IOException e) {
+            fail("La factura ha generado una excepción");
+        }
 
     }
 
