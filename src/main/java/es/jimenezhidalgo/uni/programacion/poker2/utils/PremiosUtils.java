@@ -8,9 +8,12 @@ import java.util.ArrayList;
  * Clase que nos permite abstraer las comprobaciones de qué lleva la mano de la clase Apuesta.
  */
 public final class PremiosUtils {
-    public static final int TIENE_COLOR = 1;
-    public static final int TIENE_FULL = 2;
-    public static final int TIENE_POKER = 3;
+    public static final int TIENE_PAREJA = 1;
+    public static final int TIENE_DOBLE_PAREJA = 2;
+    public static final int TIENE_TRIO = 3;
+    public static final int TIENE_COLOR = 4;
+    public static final int TIENE_FULL = 5;
+    public static final int TIENE_POKER = 6;
     public static final int NO_TIENE_NADA = -1;
 
     /**
@@ -21,19 +24,62 @@ public final class PremiosUtils {
      * El valor de ese código viene dado en las constantes definidas en esta calse.
      */
     public static int comprobarCombinacionEnMano(ArrayList<Carta> mano){
-        if (tieneColor(mano)){
-            return TIENE_COLOR;
+
+        if (tienePoker(mano)){
+            return TIENE_POKER;
         }
 
         if (tieneFull(mano)){
             return TIENE_FULL;
         }
 
-        if (tienePoker(mano)){
-            return TIENE_POKER;
+        if (tieneColor(mano)){
+            return TIENE_COLOR;
+        }
+
+        if(tienePareja(mano)){
+            return TIENE_PAREJA;
         }
 
         return NO_TIENE_NADA;
+    }
+
+    private static boolean tienePareja(ArrayList<Carta> mano){
+        int ocurrencias = 1;
+
+        for (int i = 0, aux = 1; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i == j) continue;
+                if (mano.get(i).mismaFigura(mano.get(j))) aux++;
+            }
+            if (aux > ocurrencias) ocurrencias = aux;
+            aux = 1;
+        }
+
+        if (ocurrencias == 2){
+            return true;
+        }
+
+        return false;
+    }
+
+    private static boolean tieneTrio(ArrayList<Carta> mano){
+        int ocurrencias = 1;
+
+        for (int i = 0, aux = 1; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i == j) continue;
+                if (mano.get(i).mismaFigura(mano.get(j))) aux++;
+            }
+            if (aux > ocurrencias) ocurrencias = aux;
+            aux = 1;
+        }
+
+        if (ocurrencias == 3){
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -46,7 +92,7 @@ public final class PremiosUtils {
         /*Comparamos las cartas etre sí para ver si tienen diferente palo*/
         for (int i = 0; i <= 4; i++) {
             for (int j = 0; j <= 4; j++) {
-                if(!mano.get(i).mismoPalo(mano.get(j))){ //Si dos son del mismo palo, entonces no tenemos color
+                if(!mano.get(i).mismoPalo(mano.get(j))){ //Si dos son de diferente palo, entonces no tenemos color
                     return false;
                 }
             }
