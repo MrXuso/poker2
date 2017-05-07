@@ -8,18 +8,25 @@ import java.util.ArrayList;
  * Clase que nos permite abstraer las comprobaciones de qué lleva la mano de la clase Apuesta.
  */
 public final class PremiosUtils {
+
     public static final int TIENE_PAREJA = 1;
+
     public static final int TIENE_DOBLE_PAREJA = 2;
+
     public static final int TIENE_TRIO = 3;
+
     public static final int TIENE_COLOR = 4;
+
     public static final int TIENE_FULL = 5;
+
     public static final int TIENE_POKER = 6;
+
     public static final int NO_TIENE_NADA = -1;
 
     /**
      * Nos devuelve un int con la constante de lo que lleva la mano que le pasamos o -1 si no lleva nada.
      * Comprobamos qué lleva en las manos con un orden de prioridad (color vale más que full t full vale más que póker
-     * @param mano array de cinco cartas (int[] de tamaño 5)
+     * @param mano ArrayList de cinco cartas
      * @return entero con un código con lo que tiene la mano.
      * El valor de ese código viene dado en las constantes definidas en esta calse.
      */
@@ -52,6 +59,11 @@ public final class PremiosUtils {
         return NO_TIENE_NADA;
     }
 
+    /**
+     * Comprueba si la mano tiene pareja
+     * @param mano ArrayList de cinco cartas
+     * @return true si la mano tine pareja, false en caso contrario
+     */
     private static boolean tienePareja(ArrayList<Carta> mano){
         int ocurrencias = 1;
 
@@ -68,6 +80,11 @@ public final class PremiosUtils {
 
     }
 
+    /**
+     * Comprueba si la mano tiene doble pareja
+     * @param mano ArrayList de cinco cartas
+     * @return true si la mano tine doble pareja, false en caso contrario
+     */
     private static boolean tieneDoblePareja(ArrayList<Carta> mano) {
         int ocurrencias = 0;
         ArrayList<Carta> manoAux = new ArrayList<>();
@@ -85,6 +102,11 @@ public final class PremiosUtils {
         return ocurrencias == 4;
     }
 
+    /**
+     * Comprueba si la mano tiene Trio
+     * @param mano ArrayList de cinco cartas
+     * @return true si la mano tine Trio, false en caso contrario
+     */
     private static boolean tieneTrio(ArrayList<Carta> mano){
         int ocurrencias = 1;
 
@@ -103,7 +125,7 @@ public final class PremiosUtils {
 
     /**
      * Comprueba si la mano tiene color
-     * @param mano array de cinco cartas (int[] de tamaño 5)
+     * @param mano ArrayList de cinco cartas
      * @return true si la mano tiene color, false en caso contrario
      */
     private static boolean tieneColor(ArrayList<Carta> mano){
@@ -122,7 +144,7 @@ public final class PremiosUtils {
 
     /**
      * Comprueba si la mano tiene full
-     * @param mano array de cinco cartas (int[] de tamaño 5)
+     * @param mano ArrayList de cinco cartas
      * @return true si la mano lleva full, false en caso contrario
      */
     private static boolean tieneFull(ArrayList<Carta> mano){
@@ -176,7 +198,7 @@ public final class PremiosUtils {
 
     /**
      * Comprueba si la mano tiene poker
-     * @param mano array de cinco cartas (int[] de tamaño 5)
+     * @param mano ArrayList de cinco cartas
      * @return true si la mano lleva poker, false en caso contrario
      */
     private static boolean tienePoker(ArrayList<Carta> mano){
