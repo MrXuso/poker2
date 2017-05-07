@@ -11,7 +11,12 @@ import static org.junit.Assert.*;
 public class BarajaTest {
 
     @Test
-    public void crearMano() throws Exception {
+    public void crearMano() throws Carta.CartaExcepcion{
+        try {
+            Baraja.crearMano();
+        } catch (Carta.CartaExcepcion cartaExcepcion) {
+            fail("Se ha generado una excepción al crear la mano");
+        }
     }
 
 }
