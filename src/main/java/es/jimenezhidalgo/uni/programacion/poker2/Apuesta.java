@@ -34,7 +34,7 @@ public class Apuesta {
                 break;
             case PremiosUtils.TIENE_TRIO:
                 combinacion = PremiosUtils.TIENE_TRIO;
-                if (mJugador.getClass().getSimpleName().equals(JugadorRegistrado.class.getSimpleName())){
+                if (mJugador.getClass().equals(JugadorRegistrado.class)){
                     premioEconómico = mCantidadApostada * 4;
                 } else {
                     premioEconómico = mCantidadApostada * 3;
@@ -42,7 +42,7 @@ public class Apuesta {
                 break;
             case PremiosUtils.TIENE_COLOR:
                 combinacion = PremiosUtils.TIENE_COLOR;
-                if (mJugador.getClass().getSimpleName().equals(JugadorRegistrado.class.getSimpleName())){
+                if (mJugador.getClass().equals(JugadorRegistrado.class)){
                     premioEconómico = mCantidadApostada * 6;
                 } else {
                     premioEconómico = mCantidadApostada * 4;
@@ -50,7 +50,7 @@ public class Apuesta {
                 break;
             case PremiosUtils.TIENE_FULL:
                 combinacion = PremiosUtils.TIENE_FULL;
-                if (mJugador.getClass().getSimpleName().equals(JugadorRegistrado.class.getSimpleName())){
+                if (mJugador.getClass().equals(JugadorRegistrado.class)){
                     premioEconómico = mCantidadApostada * 8;
                 } else {
                     premioEconómico = mCantidadApostada * 5;
@@ -58,7 +58,7 @@ public class Apuesta {
                 break;
             case PremiosUtils.TIENE_POKER:
                 combinacion = PremiosUtils.TIENE_POKER;
-                if (mJugador.getClass().getSimpleName().equals(JugadorRegistrado.class.getSimpleName())){
+                if (mJugador.getClass().equals(JugadorRegistrado.class)){
                     premioEconómico = mCantidadApostada * 10;
                 } else {
                     premioEconómico = mCantidadApostada * 6;
