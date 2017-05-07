@@ -34,14 +34,58 @@ public class PremiosTest {
     }
 
     @Test
-    public void tieneTrioTest() throws Exception {
-        mano.add(new Carta(0));
+    public void tieneDobleParejaTest() throws Exception {
         mano.add(new Carta(100));
-        mano.add(new Carta(200));
+        mano.add(new Carta(0));
+        mano.add(new Carta(202));
+        mano.add(new Carta(1));
+        mano.add(new Carta(1));
+
+        assertEquals("La mano lleva doble pareja y no debería llevar otra cosa", PremiosUtils.TIENE_DOBLE_PAREJA, PremiosUtils.comprobarCombinacionEnMano(mano));
+    }
+
+    @Test
+    public void tieneTrioTest() throws Exception {
+        mano.add(new Carta(100));
+        mano.add(new Carta(0));
+        mano.add(new Carta(0));
+        mano.add(new Carta(1));
         mano.add(new Carta(2));
-        mano.add(new Carta(3));
 
         assertEquals("La mano lleva trio y no debería llevar otra cosa", PremiosUtils.TIENE_TRIO, PremiosUtils.comprobarCombinacionEnMano(mano));
+    }
+
+    @Test
+    public void tieneColorTest() throws Exception {
+        mano.add(new Carta(0));
+        mano.add(new Carta(1));
+        mano.add(new Carta(2));
+        mano.add(new Carta(3));
+        mano.add(new Carta(4));
+
+        assertEquals("La mano lleva color y no debería llevar otra cosa", PremiosUtils.TIENE_COLOR, PremiosUtils.comprobarCombinacionEnMano(mano));
+    }
+
+    @Test
+    public void tieneFullTest() throws Exception {
+        mano.add(new Carta(100));
+        mano.add(new Carta(0));
+        mano.add(new Carta(0));
+        mano.add(new Carta(1));
+        mano.add(new Carta(1));
+
+        assertEquals("La mano lleva full y no debería llevar otra cosa", PremiosUtils.TIENE_FULL, PremiosUtils.comprobarCombinacionEnMano(mano));
+    }
+
+    @Test
+    public void tienePokerTest() throws Exception {
+        mano.add(new Carta(0));
+        mano.add(new Carta(0));
+        mano.add(new Carta(0));
+        mano.add(new Carta(0));
+        mano.add(new Carta(101));
+
+        assertEquals("La mano lleva poker y no debería llevar otra cosa", PremiosUtils.TIENE_POKER, PremiosUtils.comprobarCombinacionEnMano(mano));
     }
 
     @After
