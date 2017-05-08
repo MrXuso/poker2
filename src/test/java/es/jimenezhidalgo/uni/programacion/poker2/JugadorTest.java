@@ -1,6 +1,7 @@
 package es.jimenezhidalgo.uni.programacion.poker2;
 
 import es.jimenezhidalgo.uni.programacion.poker2.JugadorRegistrado;
+import es.jimenezhidalgo.uni.programacion.poker2.exceptions.JugadorException;
 import es.jimenezhidalgo.uni.programacion.poker2.utils.FacturaUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,12 +28,8 @@ public class JugadorTest {
 
     @Test
     public void crearFactura(){
-        try {
-            mJugadorRegistrado.setFechaRegistro(new Date(System.currentTimeMillis() - 4L * 356 * 24 * 3600 * 1000));
-            FacturaUtil.crearFactura(mJugadorRegistrado, 50);
-        } catch (IOException e) {
-            fail("La factura ha generado una excepción");
-        }
+        mJugadorRegistrado.setFechaRegistro(new Date(System.currentTimeMillis() - 4L * 356 * 24 * 3600 * 1000));
+        FacturaUtil.crearFactura(mJugadorRegistrado, 50);
 
     }
 
@@ -40,8 +37,28 @@ public class JugadorTest {
     public void retirarBeneficios() throws Exception {
         assertEquals("Expected 50", 50, mJugadorRegistrado.retirarBeneficios(),0.0);
         mJugadorRegistrado.aumentarSaldo(50);
-        mJugadorRegistrado.setFechaRegistro(new Date(System.currentTimeMillis() - (400L * 24 * 3600 * 1000)));
-        assertEquals("Expected 51", 51, mJugadorRegistrado.retirarBeneficios(), 0.0);
+        mJugadorRegistrado.setFechaRegistro(new Date(System.currentTimeMillis() - (4L * 367 * 24 * 3600 * 1000)));
+        assertEquals("Expected 54", 54, mJugadorRegistrado.retirarBeneficios(), 0.0);
+    }
+
+    @Test
+    public void altaBajaJugadorTest() throws JugadorException {
+
+        mJugadorRegistrado.setFechaRegistro(new Date(System.currentTimeMillis() - 4L * 367 * 24 * 3600 * 1000));
+
+        try {
+            CasaApuestas.altaJugador(mJugadorRegistrado);
+        } catch (Exception e) {
+            fail("No debería salta una excepción al añadir el jugador");
+        }
+
+        try {
+            CasaApuestas.altaJugador(mJugadorRegistrado);
+            fail("Debería de provocar una excepción al ya existir el jugador");
+        } catch (JugadorException ignored){}
+
+        assertEquals("Debería haber devuelto el jugadorRegistrado", mJugadorRegistrado, CasaApuestas.bajaJugador(mJugadorRegistrado.getNif()));
+
     }
 
 }
