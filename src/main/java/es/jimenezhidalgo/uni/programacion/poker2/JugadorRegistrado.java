@@ -1,5 +1,6 @@
 package es.jimenezhidalgo.uni.programacion.poker2;
 
+import es.jimenezhidalgo.uni.programacion.poker2.exceptions.JugadorException;
 import es.jimenezhidalgo.uni.programacion.poker2.utils.DateUtils;
 import es.jimenezhidalgo.uni.programacion.poker2.utils.FacturaUtil;
 
@@ -14,7 +15,7 @@ public class JugadorRegistrado extends Jugador{
     private String mContrasenia;
     private Date mFechaRegistro;
 
-    public JugadorRegistrado(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento, String cuentaBancaria, String contrasenia, Date fechaRegistro) {
+    public JugadorRegistrado(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento, String cuentaBancaria, String contrasenia, Date fechaRegistro) throws JugadorException {
         super(nif, nombre, apellidos, saldo, fechaNacimiento);
         mCuentaBancaria = cuentaBancaria;
         mContrasenia = contrasenia;
@@ -59,7 +60,6 @@ public class JugadorRegistrado extends Jugador{
             return saldo * multiplicador;
         }
 
-        //TODO:  Añadir excepción
         return -1;
     }
 }
