@@ -13,6 +13,7 @@ public final class Baraja {
     private static ArrayList<Carta> mBaraja = new ArrayList<>();
 
     private static void inicializarBaraja() throws Carta.CartaExcepcion {
+        mBaraja.clear();
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 12; j++) {
                 mBaraja.add(new Carta((i * 100) + j));
