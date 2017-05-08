@@ -19,37 +19,43 @@ public class FacturaUtil {
      * @param saldoRetirado cantidad de fondos retirados
      * @throws IOException
      */
-    public static void crearFactura(Jugador jugador, double saldoRetirado) throws IOException {
-        Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("Factura_" + jugador.getNif() + ".txt"), "UTF-8"));
+    public static void crearFactura(Jugador jugador, double saldoRetirado){
+        try {
+            Writer writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("Factura_" + jugador.getNif() + ".txt"), "UTF-8"));
 
-        String bonificacionMensaje;
+            String bonificacionMensaje;
 
-        if (jugador.getClass().equals(JugadorRegistrado.class)){        //Si es un jugador registrado tendrá bonificación, si no no se aplica
-            bonificacionMensaje = Integer.toString(DateUtils.getDiferenciaAnios(((JugadorRegistrado) jugador).getFechaRegistro(), new Date()) * 2) + "% de bonificación";
-        } else {
-            bonificacionMensaje = "No aplica por ser un jugador ocasional";
+            if (jugador.getClass().equals(JugadorRegistrado.class)){        //Si es un jugador registrado tendrá bonificación, si no no se aplica
+                bonificacionMensaje = Integer.toString(DateUtils.getDiferenciaAnios(((JugadorRegistrado) jugador).getFechaRegistro(), new Date()) * 2) + "% de bonificación";
+            } else {
+                bonificacionMensaje = "No aplica por ser un jugador ocasional";
+            }
+
+            String cabecera = "\nFactura de " + jugador.getNombre() + " " + jugador.getApellidos() + " con NIF " + jugador.getNif() + "\n";
+            writer.write(cabecera);
+
+            for (int i = 0; i < cabecera.length() - 1; i++) {
+                writer.write("-");      //Ponemos tantos guiones como carácteres tiene la cabecera
+            }
+
+            String cuerpo = "\n\n\n--" +
+                    "\nFecha emitida: " + (new Date()).toString() +
+                    "\n--" +
+                    "\nCantidad retirada: " + saldoRetirado + "€" +
+                    "\n--" +
+                    "\nBonificacion por antigüedad: " + bonificacionMensaje +
+                    "\n--" +
+                    "\nConcepto: Ganancias poker" +
+                    "\n--" +
+                    "\n\n\nGRACIAS POR JUGAR CON NOSOTROS!";
+            writer.write(cuerpo);
+
+            writer.close();     //Cerramos el archivo
+        } catch (IOException e){
+            System.err.println("No se ha podido crear una factura");
+            e.printStackTrace();
         }
 
-        String cabecera = "\nFactura de " + jugador.getNombre() + " " + jugador.getApellidos() + " con NIF " + jugador.getNif() + "\n";
-        writer.write(cabecera);
-
-        for (int i = 0; i < cabecera.length() - 1; i++) {
-            writer.write("-");      //Ponemos tantos guiones como carácteres tiene la cabecera
-        }
-
-        String cuerpo = "\n\n\n--" +
-                "\nFecha emitida: " + (new Date()).toString() +
-                "\n--" +
-                "\nCantidad retirada: " + saldoRetirado + "€" +
-                "\n--" +
-                "\nBonificacion por antigüedad: " + bonificacionMensaje +
-                "\n--" +
-                "\nConcepto: Ganancias poker" +
-                "\n--" +
-                "\n\n\nGRACIAS POR JUGAR CON NOSOTROS!";
-        writer.write(cuerpo);
-
-        writer.close();     //Cerramos el archivo
     }
 }
