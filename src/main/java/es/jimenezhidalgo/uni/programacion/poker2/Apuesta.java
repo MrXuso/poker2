@@ -19,6 +19,10 @@ public class Apuesta {
         mCantidadApostada = cantidadApostada;
     }
 
+    /**
+     * Nos devuelve un objeto de tipo premio que contiene el premio económico y la combinacion de cartas
+     * @return objeto de tipo premio que contiene el premio económico y la combinacion de cartas
+     */
     public Premio verPremio(){
         double premioEconómico = 0;
         int combinacion = PremiosUtils.NO_TIENE_NADA;
@@ -72,6 +76,9 @@ public class Apuesta {
         return new Premio(combinacion, premioEconómico);
     }
 
+    /**
+     * Clase Premio que nos permite devolver los premios de manera más sencilla
+     */
     public class Premio {
         private int mCombinacion;
         private double premioEconomico;
