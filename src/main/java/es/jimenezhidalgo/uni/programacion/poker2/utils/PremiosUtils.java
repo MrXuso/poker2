@@ -22,6 +22,8 @@ public final class PremiosUtils {
     public static final int TIENE_POKER = 6;
 
     public static final int NO_TIENE_NADA = -1;
+    
+    public static final String COMBINACIONES[] = {"pareja", "doble pareja", "trío", "color", "full", "póker"};
 
     /**
      * Nos devuelve un int con la constante de lo que lleva la mano que le pasamos o -1 si no lleva nada.
