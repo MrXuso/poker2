@@ -54,4 +54,20 @@ public abstract class Jugador {
             //TODO: Excepcion
         }
     }
+    
+    /**
+     * Retira del saldo el dinero apostado
+     * @param cantidad Cantidad de dinero que ha apostado el jugador
+     */
+    public void apuestaDinero(double cantidad){
+        mSaldo -= cantidad;
+    }
+    
+    /**
+     * Añade la cantidad de dinero ganada al apostar al saldo
+     * @param cantidad Cantidad ganada por el jugador
+     */
+    public void ganaDineroApuesta(double cantidad){
+        mSaldo += cantidad;
+    }
 }
