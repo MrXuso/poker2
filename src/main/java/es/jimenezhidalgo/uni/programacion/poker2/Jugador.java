@@ -1,5 +1,7 @@
 package es.jimenezhidalgo.uni.programacion.poker2;
 
+import es.jimenezhidalgo.uni.programacion.poker2.exceptions.JugadorException;
+import es.jimenezhidalgo.uni.programacion.poker2.utils.DateUtils;
 import java.util.Date;
 
 /**
@@ -13,12 +15,16 @@ public abstract class Jugador {
     private double mSaldo;
     private Date mFechaNacimiento;
 
-    public Jugador(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento) {
+    public Jugador(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento) throws JugadorException {
         mNif = nif;
         mNombre = nombre;
         mApellidos = apellidos;
         mSaldo = saldo;
-        mFechaNacimiento = fechaNacimiento;
+        if (DateUtils.getDiferenciaAnios(fechaNacimiento, new Date()) < 18) {
+            throw new JugadorException(JugadorException.EDAD_INCORRECTA);
+        } else {
+            mFechaNacimiento = fechaNacimiento;
+        }
     }
 
     public String getNif() {
