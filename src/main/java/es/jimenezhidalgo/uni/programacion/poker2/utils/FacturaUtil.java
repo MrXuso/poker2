@@ -25,8 +25,6 @@ public class FacturaUtil {
                     new FileOutputStream("Factura_" + jugador.getNif() + ".txt"), "UTF-8"));
 
             String bonificacionMensaje = "";
-            
-            System.out.println(jugador.getClass().getSimpleName());
 
             if (jugador.getClass().equals(JugadorRegistrado.class)){        //Si es un jugador registrado tendrá bonificación, si no no se aplica
                 bonificacionMensaje = Integer.toString(DateUtils.getDiferenciaAnios(((JugadorRegistrado) jugador).getFechaRegistro(), new Date()) * 2) + "% de bonificación";
