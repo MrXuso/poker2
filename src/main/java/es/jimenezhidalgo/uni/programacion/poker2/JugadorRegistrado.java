@@ -1,6 +1,7 @@
 package es.jimenezhidalgo.uni.programacion.poker2;
 
 import es.jimenezhidalgo.uni.programacion.poker2.utils.DateUtils;
+import es.jimenezhidalgo.uni.programacion.poker2.utils.FacturaUtil;
 
 import java.util.Date;
 
@@ -52,7 +53,9 @@ public class JugadorRegistrado extends Jugador{
 
             double saldo = getSaldo();
             setSaldo(0);
-            
+
+            FacturaUtil.crearFactura(this, saldo * multiplicador);
+
             return saldo * multiplicador;
         }
 
