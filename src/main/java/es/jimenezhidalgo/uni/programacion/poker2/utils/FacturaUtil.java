@@ -1,6 +1,7 @@
 package es.jimenezhidalgo.uni.programacion.poker2.utils;
 
 import es.jimenezhidalgo.uni.programacion.poker2.Jugador;
+import es.jimenezhidalgo.uni.programacion.poker2.JugadorOcasional;
 import es.jimenezhidalgo.uni.programacion.poker2.JugadorRegistrado;
 
 import java.io.*;
@@ -24,11 +25,13 @@ public class FacturaUtil {
             Writer writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("Factura_" + jugador.getNif() + ".txt"), "UTF-8"));
 
-            String bonificacionMensaje;
+            String bonificacionMensaje = "";
+            
+            System.out.println(jugador.getClass().getSimpleName());
 
             if (jugador.getClass().equals(JugadorRegistrado.class)){        //Si es un jugador registrado tendrá bonificación, si no no se aplica
                 bonificacionMensaje = Integer.toString(DateUtils.getDiferenciaAnios(((JugadorRegistrado) jugador).getFechaRegistro(), new Date()) * 2) + "% de bonificación";
-            } else {
+            } else if(jugador.getClass().equals(JugadorOcasional.class)){
                 bonificacionMensaje = "No aplica por ser un jugador ocasional";
             }
 
