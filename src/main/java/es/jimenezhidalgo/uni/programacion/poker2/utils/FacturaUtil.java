@@ -18,7 +18,6 @@ public class FacturaUtil {
      * Crea una factura en un archivo de texto con el nif del jugador y diversos datos.
      * @param jugador Jugador que ha retirado sus fondos
      * @param saldoRetirado cantidad de fondos retirados
-     * @throws IOException
      */
     public static void crearFactura(Jugador jugador, double saldoRetirado){
         try {

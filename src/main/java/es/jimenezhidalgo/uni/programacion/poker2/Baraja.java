@@ -22,8 +22,9 @@ public final class Baraja {
     }
 
     /**
-     * Reparte una mano de 5 cartas de la baraja de 20 cartas que tenemos
-     * @return
+     * Crea una mano para jugar
+     * @return Arraylist con una mano de cinco cartas
+     * @throws es.jimenezhidalgo.uni.programacion.poker2.Carta.CartaExcepcion devuelve una excepción de carta
      */
     public static ArrayList<Carta> crearMano() throws Carta.CartaExcepcion {
         ArrayList<Carta> mano = new ArrayList<>();

@@ -25,7 +25,8 @@ public class Carta {
 
     /**
      * Constructor que recibe un entero y lo convierte en carta
-     * @param carta
+     * @param carta entero de la forma palo * 100 + figura
+     * @throws es.jimenezhidalgo.uni.programacion.poker2.Carta.CartaExcepcion una excepción personalizada si ocurre un error al intentar crear una carta imposible
      */
     public Carta(int carta) throws CartaExcepcion {
 
