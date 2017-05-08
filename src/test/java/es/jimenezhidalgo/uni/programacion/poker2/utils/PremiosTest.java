@@ -1,6 +1,7 @@
 package es.jimenezhidalgo.uni.programacion.poker2.utils;
 
 import es.jimenezhidalgo.uni.programacion.poker2.*;
+import es.jimenezhidalgo.uni.programacion.poker2.exceptions.JugadorException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -8,6 +9,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static org.junit.Assert.*;
 
@@ -23,8 +26,12 @@ public class PremiosTest {
 
     @BeforeClass
     public static void beforeClassSetUp8(){
-        sJugadorOcasional = new JugadorOcasional("0", "pepito", "perez", 50, new Date(System.currentTimeMillis() - 18L * 365 * 24 * 3600 * 1000), "1234 5678 9101 1121");
-        sJugadorRegistrado = new JugadorRegistrado("0", "pepito", "perez", 50, new Date(System.currentTimeMillis() - 18L * 365 * 24 * 3600 * 1000), "ES92 1111 2222 3333 4444", "asdf", new Date());
+        try {
+            sJugadorOcasional = new JugadorOcasional("0", "pepito", "perez", 50, new Date(System.currentTimeMillis() - 18L * 367 * 24 * 3600 * 1000), "1234 5678 9101 1121");
+            sJugadorRegistrado = new JugadorRegistrado("0", "pepito", "perez", 50, new Date(System.currentTimeMillis() - 18L * 367 * 24 * 3600 * 1000), "ES92 1111 2222 3333 4444", "asdf", new Date());
+        } catch (JugadorException ex) {
+            Logger.getLogger(PremiosTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Before
