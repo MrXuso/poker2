@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class CasaApuestas {
 
-    private static HashMap<String, JugadorRegistrado> sJugadoresRegistrados = new HashMap();
+    public static HashMap<String, JugadorRegistrado> sJugadoresRegistrados = new HashMap();
 
     /**
      * Da de alta un jugador en el sistema
