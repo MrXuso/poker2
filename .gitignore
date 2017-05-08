@@ -17,6 +17,7 @@ hs_err_pid*
 .idea/
 *.iml
 *.iws
+*.ipr
 
 # Mac
 .DS_Store
@@ -24,3 +25,5 @@ hs_err_pid*
 # Maven
 log/
 target/
+
+Factura_*.txt
