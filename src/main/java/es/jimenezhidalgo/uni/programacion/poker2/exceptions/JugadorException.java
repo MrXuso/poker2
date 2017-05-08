@@ -5,6 +5,8 @@ package es.jimenezhidalgo.uni.programacion.poker2.exceptions;
  */
 public class JugadorException extends Exception{
 
+    public static final String JUGADOR_YA_REGISTRADO = "El jugador ya había sido registrado";
+
     public static final String SALDO_INSUFICIENTE = "Saldo insuficiente";
 
     public static final String NIF_INCORRECTO = "NIF incorrecto";
