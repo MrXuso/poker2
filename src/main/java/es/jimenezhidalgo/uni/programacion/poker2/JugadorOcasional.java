@@ -1,5 +1,7 @@
 package es.jimenezhidalgo.uni.programacion.poker2;
 
+import es.jimenezhidalgo.uni.programacion.poker2.exceptions.JugadorException;
+import es.jimenezhidalgo.uni.programacion.poker2.utils.FacturaUtil;
 import java.util.Date;
 
 /**
@@ -9,7 +11,7 @@ public class JugadorOcasional extends Jugador {
 
     private String mNumeroTarjeta;
 
-    public JugadorOcasional(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento, String numeroTarjeta) {
+    public JugadorOcasional(String nif, String nombre, String apellidos, double saldo, Date fechaNacimiento, String numeroTarjeta) throws JugadorException {
         super(nif, nombre, apellidos, saldo, fechaNacimiento);
         mNumeroTarjeta = numeroTarjeta;
     }
@@ -27,10 +29,10 @@ public class JugadorOcasional extends Jugador {
 
         if (getSaldo() > 0) {
             double saldo = getSaldo();
+            FacturaUtil.crearFactura(this, saldo);
             setSaldo(0);
             return saldo;
         }
-        //TODO: Añadir excepción
         return -1;
     }
 }
