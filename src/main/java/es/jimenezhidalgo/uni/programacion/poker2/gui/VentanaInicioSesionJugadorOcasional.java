@@ -23,12 +23,12 @@ import javax.swing.JSpinner;
  *
  * @author jesus.jimenez
  */
-public class VentanaInicioSesiónJugadorOcasional extends javax.swing.JFrame {
+public class VentanaInicioSesionJugadorOcasional extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaRegistroJugadorRegistrado
      */
-    public VentanaInicioSesiónJugadorOcasional() {
+    public VentanaInicioSesionJugadorOcasional() {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(true);

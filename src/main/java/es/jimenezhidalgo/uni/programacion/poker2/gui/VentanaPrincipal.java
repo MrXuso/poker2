@@ -259,7 +259,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jugadoresJButtonActionPerformed
 
     private void inicioJugadorOcasionalJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioJugadorOcasionalJButtonActionPerformed
-        new VentanaInicioSesiónJugadorOcasional();
+        new VentanaInicioSesionJugadorOcasional();
         dispose();
     }//GEN-LAST:event_inicioJugadorOcasionalJButtonActionPerformed
 
