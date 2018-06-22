@@ -24,48 +24,48 @@ public class Apuesta {
      * @return objeto de tipo premio que contiene el premio económico y la combinacion de cartas
      */
     public Premio verPremio(){
-        double premioEconómico = 0;
+        double premioEconomico = 0;
         int combinacion = PremiosUtils.NO_TIENE_NADA;
 
         switch (PremiosUtils.comprobarCombinacionEnMano(mMano)){
             case PremiosUtils.TIENE_PAREJA:
                 combinacion = PremiosUtils.TIENE_PAREJA;
-                premioEconómico = mCantidadApostada;
+                premioEconomico = mCantidadApostada;
                 break;
             case PremiosUtils.TIENE_DOBLE_PAREJA:
                 combinacion = PremiosUtils.TIENE_DOBLE_PAREJA;
-                premioEconómico = mCantidadApostada * 2;
+                premioEconomico = mCantidadApostada * 2;
                 break;
             case PremiosUtils.TIENE_TRIO:
                 combinacion = PremiosUtils.TIENE_TRIO;
                 if (mJugador.getClass().equals(JugadorRegistrado.class)){
-                    premioEconómico = mCantidadApostada * 4;
+                    premioEconomico = mCantidadApostada * 4;
                 } else {
-                    premioEconómico = mCantidadApostada * 3;
+                    premioEconomico = mCantidadApostada * 3;
                 }
                 break;
             case PremiosUtils.TIENE_COLOR:
                 combinacion = PremiosUtils.TIENE_COLOR;
                 if (mJugador.getClass().equals(JugadorRegistrado.class)){
-                    premioEconómico = mCantidadApostada * 6;
+                    premioEconomico = mCantidadApostada * 6;
                 } else {
-                    premioEconómico = mCantidadApostada * 4;
+                    premioEconomico = mCantidadApostada * 4;
                 }
                 break;
             case PremiosUtils.TIENE_FULL:
                 combinacion = PremiosUtils.TIENE_FULL;
                 if (mJugador.getClass().equals(JugadorRegistrado.class)){
-                    premioEconómico = mCantidadApostada * 8;
+                    premioEconomico = mCantidadApostada * 8;
                 } else {
-                    premioEconómico = mCantidadApostada * 5;
+                    premioEconomico = mCantidadApostada * 5;
                 }
                 break;
             case PremiosUtils.TIENE_POKER:
                 combinacion = PremiosUtils.TIENE_POKER;
                 if (mJugador.getClass().equals(JugadorRegistrado.class)){
-                    premioEconómico = mCantidadApostada * 10;
+                    premioEconomico = mCantidadApostada * 10;
                 } else {
-                    premioEconómico = mCantidadApostada * 6;
+                    premioEconomico = mCantidadApostada * 6;
                 }
                 break;
             default:
@@ -73,7 +73,7 @@ public class Apuesta {
                 break;
         }
 
-        return new Premio(combinacion, premioEconómico);
+        return new Premio(combinacion, premioEconomico);
     }
 
     /**
